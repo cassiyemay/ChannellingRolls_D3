@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>World Populations</title>
+	
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style type="text/css">
+		.chart text {
+			font-family: sans-serif;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>World Populations</h1>
+	<h2>Demo</h2>
+	
+		<script type="text/javascript" id = "demo_code">
+
+//Width and height
+var svg_width = 700;
+var svg_height = 300;
+var bar_padding = 3;
+var value_scalar = 0.0000004;
+var axis_gap_text = 3
+
+//Create SVG element
+var svg = d3.select("body")
+			.append("svg")
+			.attr("width", svg_width)
+			.attr("height", svg_height)
+			.attr("class", "chart");
+
+// Define a fucntion to draw a simple bar chart
+function generateVis(){
+	
+	// Find maximum population	
+	var max_pop = d3.max(dataset, function(d) { return +d.Population;} );
+
+	// Add rectangles
+	svg.selectAll("rect")
+	   .data(dataset)
+	   .enter()
+		   .append("rect")
+		   .attr("y", function(d, i) {
+		   		return i * (svg_height / dataset.length);
+		   })
+		   .attr("x",0)
+		   .attr("width", function(d, i) {
+		   		return (d.Population/max_pop)*svg_width;
+		   })
+		   .attr("height", function(d) {
+		   		return (svg_height / dataset.length) - bar_padding;
+		   })
+		   .style("fill", "Blue");
+
+	// Add rectangles
+	svg.selectAll("text")
+	   .data(dataset)
+	   .enter()
+		   .append("text")
+		   .attr("y", function(d, i) {
+		   		return (i+0.5) * (svg_height / dataset.length) - bar_padding;;
+		   })
+      		.attr("dy", "6px")
+		   .attr("x", axis_gap_text)
+		   .style("fill", "white")
+			.text(function(d){
+				return d.Country;
+			});
+}
+
+// Load the file data.csv and generate a visualisation based on it
+d3.csv("./Top10WorldPopulations.csv", function(error, data){
+	
+	// handle any data loading errors
+	if(error){
+		console.log("Something went wrong");
+		console.log(error);
+	}else{
+		console.log("Data Loaded");
+		
+		// Assign  the data object loaded to the global dataset variable
+		dataset = data;
+
+		// convert each population variable to numeric type
+		dataset.forEach(function(d){ d['Population'] = +d['Population']; });   
+
+		// Generate the visualisation
+		generateVis();
+	}
+});
+
+		</script>
+	
+		
+	<h2>Full Code Listing</h2>
+	<pre class = "line-numbers"><code class="language-javascript" id = "full_code_list"></code></pre>
+	<script type="text/javascript">d3.select("#full_code_list").text(d3.select("#demo_code").text())</script>
+
+</body>	 
+</html>

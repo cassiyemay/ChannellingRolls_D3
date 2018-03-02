@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: SVG Groups</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>SVG Groups</h1>
+	<p>SVG elements can be combined into groups, which allows things like styling to applied in one go.</p>
+
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="300" height="100" style='background: aliceblue;'>
+	&lt;g>
+		&lt;circle cx="210" cy="90" r="40"/>
+		&lt;rect x="200" y="120" width="20", height = "80"/>
+		&lt;rect x="20" y="100" width="120", height = "100"/>
+		&lt;polygon points="20,98, 80,50, 140,98"/>
+	&lt;/g>
+&lt;/svg></code></pre>
+	
+	<svg width="300" height="200" style='background: aliceblue;'>
+		<g>
+			<circle cx="210" cy="90" r="40"/>
+			<rect x="200" y="120" width="20", height = "80"/>
+			<rect x="20" y="100" width="120", height = "100"/>
+			<polygon points="20,98, 80,50, 140,98"/>
+		</g>
+	</svg>
+	
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="300" height="100" style='background: aliceblue;'>
+	&lt;g>
+		&lt;circle cx="210" cy="90" r="40"/>
+		&lt;rect x="200" y="120" width="20", height = "80"/>
+		&lt;rect x="20" y="100" width="120", height = "100"/>
+		&lt;polygon points="20,98, 80,50, 140,98"/>
+	&lt;/g>
+&lt;/svg></code></pre>
+	
+	<svg width="300" height="200" style='background: aliceblue;'>
+		<g fill = "blue" stroke = "red">
+			<circle cx="210" cy="90" r="40"/>
+			<rect x="200" y="120" width="20", height = "80"/>
+			<rect x="20" y="100" width="120", height = "100"/>
+			<polygon points="20,98, 80,50, 140,98"/>
+		</g>
+	</svg>
+	
+	<pre class = "line-numbers"><code class="language-css">.pumpkin {
+	fill: yellow;
+	stroke: orange;
+	stroke-width: 5;
+}	</code></pre>
+
+	<style type="text/css">
+		.pumpkin {
+		 fill: yellow;
+		 stroke: orange;
+		 stroke-width: 5;
+		 }	
+	</style>
+	
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="300" height="100" style='background: aliceblue;'>
+	&lt;g class = "pumpkin">
+		&lt;circle cx="210" cy="90" r="40"/>
+		&lt;rect x="200" y="120" width="20", height = "80"/>
+		&lt;rect x="20" y="100" width="120", height = "100"/>
+		&lt;polygon points="20,98, 80,50, 140,98"/>
+	&lt;/g>
+&lt;/svg></code></pre>
+	
+	<svg width="300" height="200" style='background: aliceblue;'>
+		<g class = "pumpkin">
+			<circle cx="210" cy="90" r="40"/>
+			<rect x="200" y="120" width="20", height = "80"/>
+			<rect x="20" y="100" width="120", height = "100"/>
+			<polygon points="20,98, 80,50, 140,98"/>
+		</g>
+	</svg>
+	
+		<pre class = "line-numbers"><code class="language-markup">&lt;svg width="300" height="100" style='background: aliceblue;'>
+	&lt;g class = "pumpkin" transform="scale(0.4)">
+		&lt;circle cx="210" cy="90" r="40"/>
+		&lt;rect x="200" y="120" width="20", height = "80"/>
+		&lt;rect x="20" y="100" width="120", height = "100"/>
+		&lt;polygon points="20,98, 80,50, 140,98" fill = "black"/>
+	&lt;/g>
+&lt;/svg></code></pre>
+	
+	<svg width="300" height="200" style='background: aliceblue;'>
+		<g class = "pumpkin"  transform="scale(0.4)">
+			<circle cx="210" cy="90" r="40"/>
+			<rect x="200" y="120" width="20", height = "80"/>
+			<rect x="20" y="100" width="120", height = "100"/>
+			<polygon points="20,98, 80,50, 140,98" fill = "black"/>
+		</g>
+	</svg>
+	
+</body>	 
+</html>

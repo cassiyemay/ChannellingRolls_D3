@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: Selections in D3</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script type="text/javascript" src="./d3/d3.v4.js" charset="utf-8"></script>
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>Selections in D3</h1>
+	<p>With some SVG elements in an SVG canvas we can start to use D3's selection methods to select elements within a page to, as well as other things, change their attributes and styles.</p>
+
+	<pre class = "line-numbers"><code class="language-css">.pumpkin {
+	fill: yellow;
+	stroke: orange;
+	stroke-width: 2;
+}</code></pre>
+		 
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;g id = "circle_group">
+		&lt;circle cx="50" cy="50" r="32" fill="yellow" stroke="orange" stroke-width="4"/>
+		&lt;circle cx="110" cy="50" r="16" fill="yellow" stroke="orange" stroke-width="3"/>
+		&lt;circle cx="142" cy="50" r="8" class = "pumpkin"/>
+		&lt;circle cx="160" cy="50" r="4" fill="yellow" stroke="orange" stroke-width="1"/>
+	&lt;/g>		
+	&lt;g id = "circle_group">
+		&lt;rect x="18" y="118" width="64", height = "64" fill="yellow" stroke="orange" stroke-width="4"/>
+		&lt;rect id = "goldilocks" x="94" y="134" width="32", height = "32" fill="yellow" stroke="orange" stroke-width="3"/>
+		&lt;rect x="134" y="142" width="16", height = "16"  class = "pumpkin" />
+		&lt;rect x="156" y="146" width="8", height = "8" fill="yellow" stroke="orange" stroke-width="1"/>
+	&lt;/g>
+&lt;/svg></code></pre>
+	
+
+		 
+	<style type="text/css">
+		.pumpkin {
+		 fill: yellow;
+		 stroke: orange;
+		 stroke-width: 2;
+		 }	
+	</style>
+	
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<g id = "circle_group">
+			<circle cx="50" cy="50" r="32" fill="yellow" stroke="orange" stroke-width="4"/>
+			<circle cx="110" cy="50" r="16" fill="yellow" stroke="orange" stroke-width="3"/>
+			<circle cx="142" cy="50" r="8" class = "pumpkin" />
+			<circle cx="160" cy="50" r="4" fill="yellow" stroke="orange" stroke-width="1"/>
+		</g>
+		<g id = "square_group">
+			<rect x="18" y="118" width="64", height = "64" fill="yellow" stroke="orange" stroke-width="4"/>
+			<rect id = "goldilocks" x="94" y="134" width="32", height = "32" fill="yellow" stroke="orange" stroke-width="3"/>
+			<rect x="134" y="142" width="16", height = "16"  class = "pumpkin" />
+			<rect x="156" y="146" width="8", height = "8" fill="yellow" stroke="orange" stroke-width="1"/>
+		</g>
+	</svg>
+	
+	<p>Try the following commands in the Javascript console to experiment with the <b>select</b> method:</p>
+	<ul>
+		<li /><code class="language-javascript">d3.select("circle");</code>
+		<li /><code class="language-javascript">d3.select("rect");</code>
+		<li /><code class="language-javascript">d3.select("circle").style("fill", "blue");</code>
+		<li /><code class="language-javascript">d3.select("rect").style("fill", "red");</code>
+		<li /><code class="language-javascript">d3.select(".pumpkin").attr("cy", 30);</code>
+		<li /><code class="language-javascript">d3.select("#goldilocks").attr("width", 20);</code>
+		<li /><code class="language-javascript">d3.select("#goldilocks").attr("width", 40).attr("height", 50).attr("fill", "green");</code>
+		<li /><code class="language-javascript">d3.select(".pumpkin").style("stroke", "black");</code>
+		<li /><code class="language-javascript">d3.select("circle").select("circle").style("fill", "blue");</code>
+		<li /><code class="language-javascript">d3.select("#square_group").select("rect").style("fill", "purple");</code>
+	</ul>
+	
+	<p>Try the following commands in the Javascript console to experiment with the <b>selectAll</b> method:</p>
+	<ul>
+		<li /><code class="language-javascript">d3.selectAll("circle");</code>
+		<li /><code class="language-javascript">d3.selectAll("rect").style("fill", "red");</code>
+		<li /><code class="language-javascript">d3.selectAll("circle").attr("r", 10);</code>
+		<li /><code class="language-javascript">d3.selectAll(".pumpkin").style("stroke", "green").style("stroke-width", 6);</code>
+		<li /><code class="language-javascript">d3.selectAll("circle").attr("r", 10);</code>
+	</ul>
+	
+	<p>Selections don't have to just be SVG elements, they can be any element on the page:</p>
+	<ul>
+		<li /><code class="language-javascript">d3.select("h1");</code>
+		<li /><code class="language-javascript">d3.select("h1").text("All Your Base Are Belong To Us");</code>
+		<li /><code class="language-javascript">d3.selectAll("p").style("font-family", "cursive");</code>
+	</ul>
+	
+</body>	 
+</html>

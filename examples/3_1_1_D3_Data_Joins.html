@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: A First Data Join in D3</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script type="text/javascript" src="./d3/d3.v4.js" charset="utf-8"></script>
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>A First Data Join in D3</h1>
+	<h2>Demo</h2>
+	
+	<div class = "demo">
+		<script type="text/javascript">
+
+			//Define a simple dataset
+			var dataset = [15, 5, 5, 20, 26];
+			
+			//Create SVG element
+			svg = d3.select("body")
+				.append("svg")
+				.style("background", "aliceblue")
+				.attr("width", 1000)
+				.attr("height", 100);
+				
+			// Join the data with a circles slection and set parameters for each circle based on the data
+			svg.selectAll("circle")
+				    .data(dataset)
+				    .enter()
+					    .append("circle")
+						    .attr("cx", function(d, i){return i*70 + 40;})
+						    .attr("cy", 50)
+							.attr("r", function(q){ return q});
+		</script>
+	</div>
+	
+	<div class = "explanation">
+		<h2>Explanation</h2>
+		<p>First, set up a simple dataset</p>
+			 
+		<pre class = "line-numbers"><code class="language-javascript">//Define a simple dataset
+var dataset = [29,28,25,21,29,27,24,13,5,4];</code></pre>
+
+<p>Next, set up an empty SVG element.</p>
+<pre class = "line-numbers"><code class="language-javascript">//Create SVG element
+svg = d3.select("body")
+	.append("svg")
+	.style("background", "aliceblue")
+	.attr("width", 800)
+	.attr("height", 100);</code></pre>
+
+<p>Join the data with a circles slection and set default parameters for each circle.</p>
+<pre class = "line-numbers"><code class="language-javascript">// Join the data with a circles slection and set parameters for each circle based on the data
+svg.selectAll("circle")
+   	.data(dataset)
+   	.enter()
+    	.append("circle")
+		.attr("cx", 100)
+		.attr("cy", 50)
+		.attr("r", 10);</code></pre>
+			
+	</div>
+</body>	 
+</html>

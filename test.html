@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>World Populations</title>
+	
+    <script src="http://d3js.org/d3.v4.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+	<style type="text/css">
+		.chart text {
+			font-family: sans-serif;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>World Populations</h1>
+	<h2>Demo</h2>
+	
+		<script type="text/javascript" id = "demo_code">
+
+//Width and height
+var margin ={top: 10, right: 10, bottom: 25, left: 75};
+var svg_width = 700;
+var svg_height = 300;
+var bar_padding = 3;
+var value_scalar = 0.0000004;
+var axis_gap_text = 3
+
+//Create SVG element
+var svg = d3.select("body")
+			.append("svg")
+			.attr("width", svg_width)
+			.attr("height", svg_height)
+            .append("g")
+			.attr("class", "chart")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+// Define a fucntion to draw a simple bar chart
+function generateVis(){
+	
+	// Find maximum population	
+	//var max_pop = d3.max(dataset, function(d) { return +d.Population;} );
+    
+    var xscale = d3.scaleLinear()
+                    .domain([0,d3.max(dataset, function(d){return d.Population;})])
+                    .range([0,svg_width-50]);
+    
+    var yscale = d3.scaleBand()
+                    .domain(dataset.map(function(d){return d.Country;}))
+                    .range([0,svg_height-50],0.1);
+    
+    var xaxis = d3.axisBottom()
+                    .scale(xscale)
+    
+    var yaxis = d3.axisLeft()
+                    .scale(yscale)
+    svg.append("g")
+        .attr("transform", "translate(0," + svg_height + ")")
+        .call(xaxis);
+    
+    svg.append("g")
+        .attr("class", "axis")
+        .call(yaxis);
+    
+	// Add rectangles
+	svg.selectAll("rect")
+	   .data(dataset)
+	   .enter()
+		   .append("rect")
+		   .attr("y", function(d, i) {
+		   		return yscale(d.Country);
+		   })
+
+		   .attr("width", function(d, i) {
+		   		return xscale(d.Population);
+		   })
+		   .attr("height", function(d) {
+                //console.log(yscale(d.Country))
+		   		return yscale.bandwidth()-3;
+		   })
+		   .style("fill", "Blue");
+
+	// Add rectangles
+	/*svg.selectAll("text")
+	   .data(dataset)
+	   .enter()
+		   .append("text")
+		   .attr("y", function(d) {
+        console.log(yscale(d.Country))
+		   		return yscale(d.Country) + yscale.bandwidth()/2;
+		   })
+		   .attr("x", 0)
+		   .style("fill", "white")
+			.text(function(d){
+				return d.Country;
+			});*/
+}
+
+// Load the file data.csv and generate a visualisation based on it
+d3.csv("./Top10WorldPopulations.csv", function(error, data){
+	
+	// handle any data loading errors
+	if(error){
+		console.log("Something went wrong");
+		console.log(error);
+	}else{
+		console.log("Data Loaded");
+		
+		// Assign  the data object loaded to the global dataset variable
+		dataset = data;
+
+		// convert each population variable to numeric type
+		dataset.forEach(function(d){ d['Population'] = +d['Population']; });   
+
+		// Generate the visualisation
+		generateVis();
+	}
+});
+
+		</script>
+	
+		
+	<h2>Full Code Listing</h2>
+	<pre class = "line-numbers"><code class="language-javascript" id = "full_code_list"></code></pre>
+	<script type="text/javascript">d3.select("#full_code_list").text(d3.select("#demo_code").text())</script>
+
+</body>	 
+</html>

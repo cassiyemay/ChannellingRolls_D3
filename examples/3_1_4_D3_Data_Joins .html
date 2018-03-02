@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: A First Data Join in D3</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script type="text/javascript" src="./d3/d3.v4.js" charset="utf-8"></script>
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>A First Data Join in D3</h1>
+	<h2>Demo</h2>
+	
+	<div class = "demo">
+		<script type="text/javascript">
+
+			//Define a simple dataset
+			var dataset = [29,28,25,21,29,27,24,13,5,4];
+			
+			// Create variables for the positioning of circles
+			var gap = 70;
+			var first = 40;
+			var svg_width = 800;
+			var svg_height = 100;
+			
+			//Create SVG element
+			svg = d3.select("body")
+				.append("svg")
+				.style("background", "aliceblue")
+				.attr("width", svg_width)
+				.attr("height", svg_height);
+				
+			// Join the data with a circles selection and set parameters for each circle based on the data
+			svg.selectAll("circle")
+			    .data(dataset)
+			    .enter()
+				    .append("circle")
+					.attr("cx", function(d, i) { return (i * gap) + first; })
+					.attr("cy", svg_height/2)
+					.attr("r", function(d) { return +d; });
+					
+			// Join the data with a text selection and set parameters for each text element based on the data
+			svg.selectAll("text")
+			    .data(dataset)
+			    .enter()
+				    .append("text")
+					.attr("x", function(d, i) { return (i * gap) + first; })
+					.attr("y", svg_height - 5)
+					.attr("text-anchor", "middle")
+					.style("fill", "red")
+					.text(function(d) { return +d; });
+		</script>
+	</div>
+	
+	<div class = "explanation">
+		<h2>Explanation</h2>
+		<p>First, set up a simple dataset and some control variables</p>
+			 
+		<pre class = "line-numbers"><code class="language-javascript">//Define a simple dataset
+var dataset = [29,28,25,21,29,27,24,13,5,4];
+
+// Create variables for the positioning of circles
+var gap = 70;
+var first = 40;
+var svg_width = 800;
+var svg_height = 100;</code></pre>
+
+		<p>Next, set up an empty SVG element.</p>
+		<pre class = "line-numbers"><code class="language-javascript">//Create SVG element
+svg = d3.select("body")
+	.append("svg")
+	.style("background", "aliceblue")
+	.attr("width", svg_width)
+	.attr("height", svg_height);</code></pre>
+
+		<p>Join the data with a circles slection and set default parameters for each circle.</p>
+		<pre class = "line-numbers"><code class="language-javascript">// Join the data with a circles slection and set parameters for each circle based on the data
+svg.selectAll("circle")
+   	.data(dataset)
+   	.enter()
+    	.append("circle")
+		.attr("cx", function(d, i) { return (i * gap) + first; })
+		.attr("cy", svg_height/2)
+		.attr("r", function(d) { return +d; });</code></pre>
+		
+		<p>We can perform multiple joins using the same datasets to add multiple elements base don that data. Join the data with text elements setting them according to the data values.</p>
+		<pre class = "line-numbers"><code class="language-javascript">// Join the data with a text selection and set parameters for each text element based on the data
+svg.selectAll("text")
+    .data(dataset)
+    .enter()
+	    .append("text")
+		.attr("x", function(d, i) { return (i * gap) + first; })
+		.attr("y", svg_height - 5)
+		.attr("text-anchor", "middle")
+		.style("fill", "red")
+		.text(function(d) { return +d; });</code></pre>
+		
+	</div>
+</body>	 
+</html>

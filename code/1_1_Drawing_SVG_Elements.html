@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: Drawing SVG Elements</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>Drawing SVG Elements</h1>
+	<h2>Drawing on an SVG Canvas</h2>
+	<p>We will do all of our drawing on an SVG canvas element. Canvas elements are easily created in a HTML page as SVG elements.</p>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="500" height="50" style='background: aliceblue;'>
+
+&lt;/svg></code></pre>
+	
+	<svg width="200" height="200" style='background: aliceblue;'>
+
+	</svg>
+	
+	<p>Once we have a canvas we can draw basic shapes onto it by adding a shape element within the SVG.</p>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;circle cx="110" cy="125" r="40"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<circle cx="110" cy="125" r="40"/>
+	</svg>
+	
+	<p>Watch out that shapes can disappear off the edge of a canvas.</p>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;circle cx="110" cy="125" r="40"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<circle cx="10" cy="25" r="40"/>
+	</svg>
+	
+	<h2>SVG Basic Shapes</h2>
+	<p>SVG supports a set of basic shapes with which we can draw onto an SVG canvas.</p>
+
+	<h3>Rectangle</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;rect x="30" y="50" width="80" height="100"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<rect x="30" y="50" width="80" height="100"/>
+	</svg>
+	
+	<h3>Rounded Rectangle</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;rect x="30" y="50" width="80" height="100" rx = "10", ry = "10"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<rect x="30" y="50" width="80" height="100" rx = "10", ry = "10"/>
+	</svg>
+
+	<h3>Circle</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;circle cx="110" cy="125" r="40"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<circle cx="110" cy="125" r="40"/>
+	</svg>
+	
+	<h3>Ellipse</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;ellipse cx="110" cy="75" rx="80" ry="25"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<ellipse cx="110" cy="75" rx="80" ry="25"/>
+	</svg>
+	
+	<h3>Line</h3>
+	<p>Lines must have a stroke to be visible.</p>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;line x1="10" y1="10" x2="190" y2="190" stroke = "black"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<line x1="10" y1="10" x2="190" y2="190" stroke = "black"/>
+	</svg>
+
+	<h3>Polyline</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;polyline points = "30,10, 160,75, 172,130, 80,185, 20,90" stroke = "black" fill=none/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<polyline points = "30,10, 160,75, 172,130, 80,185, 30,10" stroke = "black" fill="none"/>
+	</svg>
+	
+	<h3>Polygon</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;polygon points = "30,10, 160,75, 172,130, 80,185, 20,90"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<polygon points = "30,10, 160,75, 172,130, 80,185, 20,90"/>
+	</svg>
+	
+	<h3>Path</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;path d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80 L 180 190 L 10 190 Z"/>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<path d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80  180 190 L 10 190 Z"/>
+	</svg>
+	
+	<h3>Text</h3>
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="200" style='background: aliceblue;'>
+	&lt;text x="250" y="25">SVG Text!!!&lt;/text>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="200" style='background: aliceblue;'>
+		<text x="25" y="100">SVG Text!!!</text>
+	</svg>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang = "en" class="tas-com">
+<head>
+	<meta charset="utf-8">
+	<title>D3: Styling SVG Elements</title>
+	<link href="./themes/prism.css" rel="stylesheet" />
+	<link href="./themes/tas_style.css" rel="stylesheet" />
+	<script src="./lib/prism.js" charset="utf-8"></script>
+</head>
+<body>
+
+	<h1>Styling SVG Elements</h1>
+	<h2>Styling Text</h2>
+	<p>The text element gives us a good deal of control over text elements</p>
+	
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="140" style='background: aliceblue;'>
+	&lt;text x="20" y="20" font-family = "serif">D3 is fun&lt;/text>
+	&lt;text x="20" y="40" font-family = "sans-serif">D3 is fun&lt;/text>
+	&lt;text x="20" y="60" font-family = "Times  New Roman">D3 is fun&lt;/text>
+	&lt;text x="20" y="80" font-family = "Impact">D3 is fun&lt;/text>
+	&lt;text x="20" y="100" font-family = "Georgia">D3 is fun&lt;/text>
+	&lt;text x="20" y="120" font-family = "cursive">D3 is fun&lt;/text>
+&lt;/svg></code></pre>
+
+		<svg width="200" height="140" style='background: aliceblue;'>
+		<text x="20" y="20" font-family = "serif">D3 is fun</text>
+		<text x="20" y="40" font-family = "sans-serif">D3 is fun</text>
+		<text x="20" y="60" font-family = "Times  New Roman">D3 is fun</text>
+		<text x="20" y="80" font-family = "Impact">D3 is fun</text>
+		<text x="20" y="100" font-family = "Georgia">D3 is fun</text>
+		<text x="20" y="120" font-family = "cursive">D3 is fun</text>
+	</svg>
+
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="120" style='background: aliceblue;'>
+	&lt;text x="20" y="20" font-size = "6">D3 is fun&lt;/text>
+	&lt;text x="20" y="40" font-size = "12">D3 is fun&lt;/text>
+	&lt;text x="20" y="60" font-size = "24">D3 is fun&lt;/text>
+	&lt;text x="20" y="100" font-size = "48">D3 is fun&lt;/text>
+&lt;/svg></code></pre>
+	
+	<svg width="200" height="120" style='background: aliceblue;'>
+		<text x="20" y="20" font-size = "6">D3 is fun</text>
+		<text x="20" y="40" font-size = "12">D3 is fun</text>
+		<text x="20" y="60" font-size = "24">D3 is fun</text>
+		<text x="20" y="100" font-size = "48">D3 is fun</text>
+	</svg>
+	
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="120" style='background: aliceblue;'>
+	&lt;text x="20" y="20" fill = "orange" stroke = "red" opacity = "1.0" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+	&lt;text x="30" y="40" fill = "yellow" stroke = "blue" opacity = "0.75" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+	&lt;text x="40" y="60" fill = "green" stroke = "blue" opacity = "0.5" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+	&lt;text x="50" y="80" fill = "yellow" stroke = "red" opacity = "0.25" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+	&lt;text x="60" y="100" fill = "blue" stroke = "red" opacity = "0.1" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+&lt;/svg></code></pre>
+
+	<svg width="200" height="120" style='background: aliceblue;'>
+		<text x="20" y="20" fill = "orange" stroke = "red" opacity = "1.0" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+		<text x="30" y="40" fill = "yellow" stroke = "blue" opacity = "0.75" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+		<text x="40" y="60" fill = "green" stroke = "blue" opacity = "0.5" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+		<text x="50" y="80" fill = "yellow" stroke = "red" opacity = "0.25" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+		<text x="60" y="100" fill = "blue" stroke = "red" opacity = "0.1" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+	</svg>
+
+	<pre class = "line-numbers"><code class="language-markup">&lt;svg width="200" height="120" style='background: aliceblue;'>
+	&lt;text x="20" y="60" font-size = "24" font-family = "Arial Black" opacity = "0.6">D3 is fun&lt;/text>
+	&lt;text x="20" y="40" transform="rotate(30 20,40)" fill = "red" opacity = "0.6" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+	&lt;text x="60" y="100" transform="rotate(-50 60,100)" fill = "blue" opacity = "0.6" font-size = "24" font-family = "Arial Black">D3 is fun&lt;/text>
+&lt;/svg></code></pre>
+	
+	<svg width="200" height="120" style='background: aliceblue;'>
+		<text x="20" y="60" font-size = "24" font-family = "Arial Black" opacity = "0.6">D3 is fun</text>
+		<text x="20" y="40" transform="rotate(30 20,40)" fill = "red" opacity = "0.6" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+		<text x="60" y="100" transform="rotate(-50 60,100)" fill = "blue" opacity = "0.6" font-size = "24" font-family = "Arial Black">D3 is fun</text>
+	</svg>
+	
+</body>
+</html>
