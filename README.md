@@ -5,5 +5,5 @@
 # 3 open website http://htmlpreview.github.com/.
 # 4 put the .html file into this website
 # 5 The outcome is like below(this web app is animation )
-![outcome on EC2]()
+![outcome on EC2](img-folder/ChannellingHans.gif)
 
